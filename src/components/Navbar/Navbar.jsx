@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from "react";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
-import ReactLogo from "../../assets/Images/logo.svg";
+import ReactLogo from "/src/assets/images/logo.svg";
 import "./style.css";
 import { signOutUser } from "../../util/firebase";
 import { useSelector } from "react-redux";
