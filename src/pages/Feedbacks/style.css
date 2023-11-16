@@ -1,0 +1,7 @@
+option {
+  @apply px-2 py-1;
+}
+
+.unread {
+  @apply bg-darkGreen text-primary;
+}

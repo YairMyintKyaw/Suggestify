@@ -1,0 +1,25 @@
+.nav-container {
+  @apply mx-auto flex justify-between items-center py-3 px-10 lg:bg-darkGreen md:bg-yellow-300 bg-red sticky top-0 z-50 font-openSans;
+}
+
+.nav-container a {
+  position: relative;
+  @apply py-1;
+}
+
+.nav-inSlider {
+  @apply text-2xl py-3 ps-10 my-3 bg-green ;
+}
+
+.hideInSp {
+  @apply hidden md:inline-block;
+}
+
+.nav-container > a:before {
+  content: "";
+  @apply w-0 h-[1.5px] bg-green  absolute bottom-0 left-0 transition-all;
+}
+
+.nav-container > a:hover:not(:first-child)::before {
+  @apply w-3/4;
+}

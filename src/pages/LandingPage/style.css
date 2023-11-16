@@ -1,0 +1,8 @@
+.getInTouch:before {
+  content: "";
+  @apply w-0 h-[1.5px] bg-primary absolute bottom-0 left-0 transition-all;
+}
+
+.getInTouch:hover:before {
+  @apply w-3/4;
+}
