@@ -13,7 +13,7 @@ const Navbar = () => {
   const homeHeroSection = useRef(null);
   const nav = useNavigate();
   const userId = useSelector((state) => state.user.uid);
-  const [isNavOpen, setIsNavOpen] = useState(true);
+  const [isNavOpen, setIsNavOpen] = useState(false);
   const scrollToHero = () => {
     homeHeroSection.current?.scrollIntoView({ behavior: "smooth" });
     setIsNavOpen(false);

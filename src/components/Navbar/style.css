@@ -1,5 +1,5 @@
 .nav-container {
-  @apply mx-auto flex justify-between items-center py-3 px-10 lg:bg-darkGreen md:bg-yellow-300 bg-red sticky top-0 z-50 font-openSans;
+  @apply mx-auto flex justify-between items-center py-3 px-10 bg-darkGreen sticky top-0 z-50 font-openSans;
 }
 
 .nav-container a {
@@ -8,7 +8,7 @@
 }
 
 .nav-inSlider {
-  @apply text-2xl py-3 ps-10 my-3 bg-green ;
+  @apply text-2xl py-3 ps-10 my-3 bg-green;
 }
 
 .hideInSp {
