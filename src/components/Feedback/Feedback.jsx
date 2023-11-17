@@ -6,7 +6,7 @@ const Feedback = () => {
     >
       <div className="flex-1">
         <img
-          src="src\assets\images\qr-code.png"
+          src="https://i.ibb.co/F5Tkr5L/About-Suggestify.png"
           alt=""
           className="max-w-[400px] w-full mx-auto toRight"
         />
