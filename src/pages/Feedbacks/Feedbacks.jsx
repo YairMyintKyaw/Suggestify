@@ -187,7 +187,7 @@ const Feedbacks = () => {
                 </button>
               </div>
               <QrCode
-                url={`localhost:5173/give-feedback/${uid}`}
+                url={`https://suggestify-seven.vercel.app/give-feedback/${uid}`}
                 name={boxName}
               />
             </div>
