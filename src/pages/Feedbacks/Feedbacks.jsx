@@ -113,7 +113,7 @@ const Feedbacks = () => {
               </div>
               <div className="flex justify-between flex-col md:flex-row gap-5 md:gap-0">
                 <div className="text-darkGreen font-helvetica_compressed text-3xl">
-                  Numbre of Total Feedback{" "}
+                  Number of Total Feedback{" "}
                   <span className="whitespace-nowrap">
                     {" "}
                     Received - {feedbacks.length}
