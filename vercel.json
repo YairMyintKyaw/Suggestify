@@ -1,10 +1,6 @@
 {
   "rewrites": [
     {
-      "source": "/give-feedback/(.*)",
-      "destination": "/give-feedback/:uid"
-    },
-    {
       "source": "/(.*)",
       "destination": "/"
     }
