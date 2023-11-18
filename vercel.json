@@ -1,12 +1,6 @@
 {
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/"
-    },
-    {
-      "source": "/give-feedback/(.*)",
-      "destination": "/give-feedback/$1"
-    }
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/.*", "dest": "/index.html" }
   ]
 }
