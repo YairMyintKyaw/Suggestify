@@ -3,7 +3,7 @@
 
 const FeedbackBoxSkeleton = () => {
   return (
-    <div className="px-10">
+    <div className="md:px-10 px-5">
       <SkeletonTheme baseColor="#283618" highlightColor="#606C38">
         <div className="flex gap-4 ">
           <div className="flex-1 ">

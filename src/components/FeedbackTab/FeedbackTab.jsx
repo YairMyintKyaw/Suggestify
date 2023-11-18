@@ -6,7 +6,7 @@ const FeedbackTab = ({ feedback: { name, id, unreadFeedbackNumber } }) => {
       to={`feedbacks/${id}`}
       className="bg-darkGreen w-fit h-fit px-2 py-2 relative "
     >
-      <span className="text-4xl font-helvetica_compressed">{name}</span>
+      <span className="md:text-4xl text-2xl font-helvetica_compressed tracking-wide">{name}</span>
 
       <span
         className={` ${

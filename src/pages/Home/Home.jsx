@@ -28,8 +28,8 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="h-[90vh] bg-green flex flex-col">
-      <div className="flex flex-col gap-5 md:gap-0 md:flex-row justify-between  md:px-10 py-10 px-5  ">
+    <div className="min-h-[90vh] bg-green flex flex-col pb-5">
+      <div className="flex flex-col gap-5 md:gap-0 md:flex-row justify-between md:px-10 py-10 px-5  ">
         <input
           type="text"
           onChange={handleInputChange}
