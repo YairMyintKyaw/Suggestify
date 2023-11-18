@@ -2,11 +2,7 @@
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/"
-    },
-    {
-      "source": "/give-feedback/:uid",
-      "destination": "/give-feedback/:uid"
+      "destination": "/index.html"
     }
   ]
 }
