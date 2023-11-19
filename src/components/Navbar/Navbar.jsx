@@ -1,5 +1,5 @@
-import { useRef, useEffect, useState } from "react";
-import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import ReactLogo from "/src/assets/images/logo.svg";
 import "./style.css";
 import { signOutUser } from "../../util/firebase";
@@ -8,9 +8,6 @@ import { CiMenuFries } from "react-icons/ci";
 import { RxCross1 } from "react-icons/rx";
 
 const Navbar = () => {
-  const userGuide = useRef(null);
-  const feedback = useRef(null);
-  const homeHeroSection = useRef(null);
   const nav = useNavigate();
   const userId = useSelector((state) => state.user.uid);
   const [isNavOpen, setIsNavOpen] = useState(false);
