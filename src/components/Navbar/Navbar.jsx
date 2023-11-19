@@ -15,15 +15,18 @@ const Navbar = () => {
   const userId = useSelector((state) => state.user.uid);
   const [isNavOpen, setIsNavOpen] = useState(false);
   const scrollToHero = () => {
-    homeHeroSection.current?.scrollIntoView({ behavior: "smooth" });
+    const element = document.querySelector("#landingHero");
+    element.scrollIntoView({ behavior: "smooth" });
     setIsNavOpen(false);
   };
   const scrollToFeedback = () => {
-    feedback.current?.scrollIntoView({ behavior: "smooth" });
+    const element = document.querySelector("#feedback");
+    element.scrollIntoView({ behavior: "smooth" });
     setIsNavOpen(false);
   };
   const scrollToUserGuide = () => {
-    userGuide.current?.scrollIntoView({ behavior: "smooth" });
+    const element = document.querySelector("#howItDoes");
+    element.scrollIntoView({ behavior: "smooth" });
     setIsNavOpen(false);
   };
 

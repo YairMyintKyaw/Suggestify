@@ -3,7 +3,7 @@ import { BsArrowRight } from "react-icons/bs";
 
 const HomeHeroSection = () => {
   return (
-    <div className="h-[90vh] flex flex-col px-10 ">
+    <div className="h-[90vh] flex flex-col px-10" id="landingHero">
       <div className="flex-1 flex items-center md:items-end   text-[18vw] md:text-[11vw] font-helvetica_compressed ">
         <div className="leading-none flex flex-col md:flex-row">
           <span className="toUp">Seek.&nbsp;</span>

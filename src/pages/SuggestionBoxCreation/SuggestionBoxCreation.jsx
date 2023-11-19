@@ -1,13 +1,22 @@
 import { Formik } from "formik";
 import { NavLink, useNavigate } from "react-router-dom";
-import { addFeedbackBox, createSuggestionBox } from "../../util/firebase";
+import {
+  addFeedbackBox,
+  createSuggestionBox,
+  isAuthenticated,
+} from "../../util/firebase";
 import { useSelector } from "react-redux";
 import { serverTimestamp } from "firebase/firestore";
+import { useEffect } from "react";
 
 const SuggestionBoxCreation = () => {
   const nav = useNavigate();
   const userId = useSelector((state) => state.user.uid);
 
+  // if unauthorize, go back to landing page
+  useEffect(() => {
+    !isAuthenticated() && nav("/");
+  }, []);
   return (
     <div className="h-[90vh] bg-primary flex flex-col px-5 md:px-10">
       <div className="flex justify-end  p-10 pr-0 ">

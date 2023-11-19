@@ -4,7 +4,6 @@ import {
   getAuth,
   getRedirectResult,
   onAuthStateChanged,
-  signInWithPopup,
   signInWithRedirect,
   signOut,
 } from "firebase/auth";
@@ -48,7 +47,7 @@ export const getGoogleRedirectResult = async () =>
 
 export const signOutUser = () => signOut(auth);
 
-export const isAuthenticated = () => auth.currentUser;
+export const isAuthenticated =  () => auth.currentUser;
 
 export const onAuthStateChangedListener = (callBack) =>
   onAuthStateChanged(auth, callBack);

@@ -1,13 +1,14 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import FeedbackTab from "../../components/FeedbackTab/FeedbackTab";
 import uuid from "react-uuid";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useState } from "react";
-import { getAllFeedbacks } from "../../util/firebase";
+import { getAllFeedbacks, isAuthenticated } from "../../util/firebase";
 import FeedbackBoxSkeleton from "../../components/FeedbackBoxSkeleton/FeedbackBoxSkeleton";
 
 const Home = () => {
+  const nav = useNavigate();
   const userId = useSelector((state) => state.user.uid);
   const [feedbackBox, setFeedbackBox] = useState();
   const [allFeedbackBox, setAllFeedbackBox] = useState();
@@ -18,6 +19,12 @@ const Home = () => {
     );
     setFeedbackBox(filteredBoxes);
   };
+
+  // if unauthorize, go back to landing page
+  useEffect(() => {
+    !isAuthenticated() && nav("/");
+  }, []);
+
   useEffect(() => {
     const fetchAndSetFeedbackBox = async () => {
       const feedbackBoxes = await getAllFeedbacks(userId);

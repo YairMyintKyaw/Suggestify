@@ -8,6 +8,7 @@ import {
   deleteFeedbackCollection,
   getFeedbackBoxName,
   getFeedbackCollection,
+  isAuthenticated,
   updateMarkFeedback,
   updateReadStatusFeedback,
 } from "../../util/firebase";
@@ -71,6 +72,11 @@ const Feedbacks = () => {
   const handleGoBack = () => {
     isShare ? setIsShare(false) : nav(-1);
   };
+
+  // if unauthorize, go back to landing page
+  useEffect(() => {
+    !isAuthenticated() && nav("/");
+  }, []);
 
   useEffect(() => {
     const getFeedbacks = async (uid) => {
