@@ -16,6 +16,7 @@ import {
   getDoc,
   getDocs,
   getFirestore,
+  onSnapshot,
   query,
   setDoc,
   updateDoc,
@@ -47,7 +48,7 @@ export const getGoogleRedirectResult = async () =>
 
 export const signOutUser = () => signOut(auth);
 
-export const isAuthenticated =  () => auth.currentUser;
+export const isAuthenticated = () => auth.currentUser;
 
 export const onAuthStateChangedListener = (callBack) =>
   onAuthStateChanged(auth, callBack);
@@ -79,20 +80,20 @@ export const addFeedback = async (boxId, feedback) => {
 };
 
 // get data
-export const getFeedbackCollection = async (boxId) => {
-  const feedbacksDoc = collection(db, "feedbackBox", boxId, "feedback");
+export const getFeedbackCollection = (boxId, callback) => {
+  const feedbackRef = collection(db, "feedbackBox", boxId, "feedback");
+  const unsubscribe = onSnapshot(feedbackRef, (snapshot) => {
+    const updatedData = snapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+    updatedData.sort(
+      (feedbackA, feedbackB) => feedbackB.dateTime - feedbackA.dateTime
+    );
+    callback(updatedData);
+  });
 
-  try {
-    const querySnapshot = await getDocs(feedbacksDoc);
-    const feedbackCollection = [];
-    querySnapshot.forEach((doc) => {
-      feedbackCollection.push({ id: doc.id, ...doc.data() });
-    });
-    // console.log(feedbackCollection);
-    return feedbackCollection;
-  } catch (error) {
-    console.error("Error retrieving feedback collection:", error);
-  }
+  return unsubscribe; // Return the unsubscribe function for cleanup
 };
 
 export const getUnreadFeedbackNumber = async (boxId) => {

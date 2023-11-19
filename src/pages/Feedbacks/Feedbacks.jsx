@@ -73,27 +73,20 @@ const Feedbacks = () => {
     isShare ? setIsShare(false) : nav(-1);
   };
 
-  // if unauthorize, go back to landing page
   useEffect(() => {
-    !isAuthenticated() && nav("/");
-  }, []);
-
-  useEffect(() => {
-    const getFeedbacks = async (uid) => {
-      const feedbacks = await getFeedbackCollection(uid);
-      feedbacks.sort(
-        (feedbackA, feedbackB) => feedbackB.dateTime - feedbackA.dateTime
-      );
-      setAllFeedbacks(feedbacks);
-      setFeedbacks(feedbacks);
-    };
+    const unsubscribe = getFeedbackCollection(uid, (updatedData) => {
+      setAllFeedbacks(updatedData);
+      setFeedbacks(updatedData);
+    });
     const getFeedbackBoxTitle = async (uid) => {
       const name = await getFeedbackBoxName(uid);
       setBoxName(name);
     };
-    getFeedbacks(uid);
     getFeedbackBoxTitle(uid);
+    return () => unsubscribe();
   }, []);
+
+  
 
   useEffect(() => {
     updateReadStatusFeedback(uid);
