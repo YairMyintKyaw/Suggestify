@@ -1,6 +1,5 @@
 import { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
-import Navbar from "./components/Navbar/Navbar";
 import GetStarted from "./pages/GetStarted/GetStarted";
 import FeedbackGiven from "./pages/FeedbackGiven/FeedbackGiven";
 import HowItsDeveloped from "./pages/HowItsDeveloped/HowItsDeveloped";
