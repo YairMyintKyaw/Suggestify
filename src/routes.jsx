@@ -13,15 +13,13 @@ const routes = () => {
   return (
     <Suspense fallback="Loading...">
       <Routes>
-        <Route element={<Navbar />} path="/">
-          <Route index element={<LandingPage />} />
-          <Route path="/get-started" element={<GetStarted />} />
-          <Route path="/give-feedback/:uid" element={<FeedbackGiven />} />
-          <Route path="/how-it-is-developed" element={<HowItsDeveloped />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/home/create-box" element={<SuggestionBoxCreation />} />
-          <Route path="/home/feedbacks/:uid" element={<Feedbacks />} />
-        </Route>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/get-started" element={<GetStarted />} />
+        <Route path="/give-feedback/:uid" element={<FeedbackGiven />} />
+        <Route path="/how-it-is-developed" element={<HowItsDeveloped />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/home/create-box" element={<SuggestionBoxCreation />} />
+        <Route path="/home/feedbacks/:uid" element={<Feedbacks />} />
       </Routes>
     </Suspense>
   );

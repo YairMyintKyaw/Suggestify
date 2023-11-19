@@ -111,7 +111,7 @@ const Navbar = () => {
           Get Started
         </NavLink>
       </div>
-      <Outlet context={[userGuide, feedback, homeHeroSection]} />
+      {/* <Outlet context={[userGuide, feedback, homeHeroSection]} /> */}
     </>
   );
 };

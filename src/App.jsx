@@ -9,6 +9,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setUserInfo } from "./store/userSlice";
+import Navbar from "./components/Navbar/Navbar";
 
 const App = () => {
   const nav = useNavigate();
@@ -46,6 +47,7 @@ const App = () => {
   }, []);
   return (
     <>
+      <Navbar />
       <View />
       <Footer />
     </>

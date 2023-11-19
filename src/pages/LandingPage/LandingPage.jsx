@@ -7,7 +7,7 @@ import HomeHeroSection from "../../components/HomeHeroSection/HomeHeroSection";
 import { useOutletContext } from "react-router-dom";
 
 const LandingPage = () => {
-  const [userGuide, feedback, homeHeroSection] = useOutletContext();
+  // const [userGuide, feedback, homeHeroSection] = useOutletContext();
   useEffect(() => {
     let toUp = {
       distance: "200px",
@@ -39,15 +39,15 @@ const LandingPage = () => {
     ScrollReveal().reveal(".toUp", toUp);
   }, []);
   return (
-    <div className="bg-green mx-auto relative" ref={homeHeroSection}>
+    <div className="bg-green mx-auto relative">
       {/* hero section */}
       <HomeHeroSection />
       {/* how it does section */}
-      <div className="h-20" id="howItDoes" ref={userGuide}></div>
+      <div className="h-20" id="howItDoes"></div>
       <UserGuide />
 
       {/* feedback */}
-      <div ref={feedback}></div>
+      <div></div>
       <Feedback />
     </div>
   );
