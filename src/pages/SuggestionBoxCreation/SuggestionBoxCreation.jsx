@@ -43,6 +43,7 @@ const SuggestionBoxCreation = () => {
               // save to firestore
               const question = values.question;
               const { id } = await addFeedbackBox(userId, question);
+              
               createSuggestionBox(question, serverTimestamp(), id);
               nav("/home");
             }}

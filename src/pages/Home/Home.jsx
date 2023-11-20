@@ -4,11 +4,9 @@ import uuid from "react-uuid";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useState } from "react";
-import {
-  getAllFeedbacks,
-  isAuthenticated,
-} from "../../util/firebase";
+import { getAllFeedbacks, isAuthenticated } from "../../util/firebase";
 import FeedbackBoxSkeleton from "../../components/FeedbackBoxSkeleton/FeedbackBoxSkeleton";
+import { IoIosRefresh } from "react-icons/io";
 
 const Home = () => {
   const nav = useNavigate();
@@ -22,28 +20,29 @@ const Home = () => {
     );
     setFeedbackBox(filteredBoxes);
   };
+  const refreshFeedbacks = async () => {
+    const feedbackBoxes = await getAllFeedbacks(userId);
+    feedbackBoxes.sort(
+      (feedbackNoA, feedbackNoB) =>
+        feedbackNoB.unreadFeedbackNumber - feedbackNoA.unreadFeedbackNumber
+    );
+    setFeedbackBox(feedbackBoxes);
+    setAllFeedbackBox(feedbackBoxes);
+  };
 
   // if unauthorize, go back to landing page
   useEffect(() => {
     !isAuthenticated() && nav("/");
   }, []);
 
-  // useEffect(() => {
-  //   const unsubscribeFeedbacks = getAllFeedbacks(
-  //     userId,
-  //     (feedbackResult) => {
-  //       setFeedbackBox(feedbackResult);
-  //       setAllFeedbackBox(feedbackResult);
-  //     }
-  //   );
-  //   console.log(feedbackBox);
-  //   return () => {
-  //     unsubscribeFeedbacks();
-  //   };
-  // }, [userId]);
   useEffect(() => {
     const fetchAndSetFeedbackBox = async () => {
       const feedbackBoxes = await getAllFeedbacks(userId);
+      feedbackBoxes.sort(
+        (feedbackNoA, feedbackNoB) =>
+          feedbackNoB.unreadFeedbackNumber - feedbackNoA.unreadFeedbackNumber
+      );
+
       setFeedbackBox(feedbackBoxes);
       setAllFeedbackBox(feedbackBoxes);
     };
@@ -52,21 +51,29 @@ const Home = () => {
 
   return (
     <div className="min-h-[90vh] bg-green flex flex-col pb-5">
-      <div className="flex flex-col gap-5 md:gap-0 md:flex-row justify-between md:px-10 py-10 px-5  ">
+      <div className="flex flex-col-reverse gap-5 md:gap-0 md:flex-row justify-between md:px-10 py-10 px-5  ">
         <input
           type="text"
           onChange={handleInputChange}
           className="border min-w-[300px] shadow text-primary border-primary text-lg rounded-md bg-inherit px-3 py-1 outline-none placeholder:text-primary"
           placeholder="Search..."
         />
-        <NavLink
-          to={"create-box"}
-          className={
-            "bg-darkGreen shadow text-primary text-lg flex items-center justify-center px-4 py-1 md:py-0 "
-          }
-        >
-          + Create Suggestion Box
-        </NavLink>
+        <div className="flex justify-end gap-3 h-fit">
+          <NavLink
+            to={"create-box"}
+            className={
+              "bg-darkGreen shadow text-primary text-lg h-fit flex items-center justify-center px-4 py-1  "
+            }
+          >
+            + Create Suggestion Box
+          </NavLink>
+          <button
+            className="bg-darkGreen text-primary text-xl   px-4 py-1 rounded-sm w-fit "
+            onClick={refreshFeedbacks}
+          >
+            <IoIosRefresh />
+          </button>
+        </div>
       </div>
       {feedbackBox ? (
         <div className="flex flex-wrap md:px-10 px-5 gap-4  ">
