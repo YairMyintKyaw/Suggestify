@@ -196,7 +196,6 @@ export const getAllFeedbacks = async (userId) => {
   try {
     const querySnapshot = await getDocs(feedbackCollection);
 
-    const feedbackList = [];
     const feedbackPromises = querySnapshot.docs.map(async (doc) => {
       const unreadFeedbackNumber = await getUnreadFeedbackNumber(doc.id);
       return { id: doc.id, ...doc.data(), unreadFeedbackNumber };
