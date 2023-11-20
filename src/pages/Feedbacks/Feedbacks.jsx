@@ -156,7 +156,7 @@ const Feedbacks = () => {
                     onChange={handleFilter}
                   >
                     <option value="all">All</option>
-                    <option value="saved">Marked</option>
+                    <option value="saved">Saved</option>
                     <option value="unread">Unread</option>
                   </select>
                 </div>

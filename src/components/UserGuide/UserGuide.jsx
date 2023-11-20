@@ -10,7 +10,7 @@ const steps = [
 
 const UserGuide = () => {
   return (
-    <div className="flex flex-col lg:flex-row ps-10 border-t border-darkGreen">
+    <div className="flex flex-col lg:flex-row ps-10 border-t border-darkGreen overflow-hidden">
       <div className="flex-1 font-helvetica_compressed text-7xl pt-10 toRight ">
         How Suggestify works?
       </div>
