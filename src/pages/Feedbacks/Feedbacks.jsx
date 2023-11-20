@@ -8,7 +8,6 @@ import {
   deleteFeedbackCollection,
   getFeedbackBoxName,
   getFeedbackCollection,
-  isAuthenticated,
   updateMarkFeedback,
   updateReadStatusFeedback,
 } from "../../util/firebase";
@@ -74,19 +73,21 @@ const Feedbacks = () => {
   };
 
   useEffect(() => {
-    const unsubscribe = getFeedbackCollection(uid, (updatedData) => {
-      setAllFeedbacks(updatedData);
-      setFeedbacks(updatedData);
-    });
+    const getFeedbacks = async (uid) => {
+      const feedbacks = await getFeedbackCollection(uid);
+      feedbacks.sort(
+        (feedbackA, feedbackB) => feedbackB.dateTime - feedbackA.dateTime
+      );
+      setAllFeedbacks(feedbacks);
+      setFeedbacks(feedbacks);
+    };
     const getFeedbackBoxTitle = async (uid) => {
       const name = await getFeedbackBoxName(uid);
       setBoxName(name);
     };
     getFeedbackBoxTitle(uid);
-    return () => unsubscribe();
+    getFeedbacks(uid);
   }, []);
-
-  
 
   useEffect(() => {
     updateReadStatusFeedback(uid);

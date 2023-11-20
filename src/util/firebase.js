@@ -16,7 +16,6 @@ import {
   getDoc,
   getDocs,
   getFirestore,
-  onSnapshot,
   query,
   setDoc,
   updateDoc,
@@ -80,22 +79,20 @@ export const addFeedback = async (boxId, feedback) => {
 };
 
 // get data
-export const getFeedbackCollection = (boxId, callback) => {
-  const feedbackRef = collection(db, "feedbackBox", boxId, "feedback");
-  const unsubscribe = onSnapshot(feedbackRef, (snapshot) => {
-    const updatedData = snapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-    }));
-    updatedData.sort(
-      (feedbackA, feedbackB) => feedbackB.dateTime - feedbackA.dateTime
-    );
-    callback(updatedData);
-  });
-
-  return unsubscribe; // Return the unsubscribe function for cleanup
+export const getFeedbackCollection = async (boxId) => {
+  const feedbacksDoc = collection(db, "feedbackBox", boxId, "feedback");
+  try {
+    const querySnapshot = await getDocs(feedbacksDoc);
+    const feedbackCollection = [];
+    querySnapshot.forEach((doc) => {
+      feedbackCollection.push({ id: doc.id, ...doc.data() });
+    });
+    // console.log(feedbackCollection);
+    return feedbackCollection;
+  } catch (error) {
+    console.error("Error retrieving feedback collection:", error);
+  }
 };
-
 export const getUnreadFeedbackNumber = async (boxId) => {
   const feedbacksDoc = collection(db, "feedbackBox", boxId, "feedback");
   const unreadFeedbacksQuery = query(

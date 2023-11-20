@@ -4,7 +4,10 @@ import uuid from "react-uuid";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useState } from "react";
-import { getAllFeedbacks, isAuthenticated } from "../../util/firebase";
+import {
+  getAllFeedbacks,
+  isAuthenticated,
+} from "../../util/firebase";
 import FeedbackBoxSkeleton from "../../components/FeedbackBoxSkeleton/FeedbackBoxSkeleton";
 
 const Home = () => {
@@ -25,6 +28,19 @@ const Home = () => {
     !isAuthenticated() && nav("/");
   }, []);
 
+  // useEffect(() => {
+  //   const unsubscribeFeedbacks = getAllFeedbacks(
+  //     userId,
+  //     (feedbackResult) => {
+  //       setFeedbackBox(feedbackResult);
+  //       setAllFeedbackBox(feedbackResult);
+  //     }
+  //   );
+  //   console.log(feedbackBox);
+  //   return () => {
+  //     unsubscribeFeedbacks();
+  //   };
+  // }, [userId]);
   useEffect(() => {
     const fetchAndSetFeedbackBox = async () => {
       const feedbackBoxes = await getAllFeedbacks(userId);
