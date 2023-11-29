@@ -42,8 +42,15 @@ export const auth = getAuth();
 export const signInWithGoogleRedirect = async () =>
   await signInWithRedirect(auth, googleProvider);
 
-export const getGoogleRedirectResult = async () =>
-  await getRedirectResult(auth);
+export const getGoogleRedirectResult = (callback) =>
+  getRedirectResult(auth).then((result) => {
+    if (result?.user || auth.currentUser) {
+      console.log("signed in");
+    } else {
+      console.log("no user");
+    }
+    callback(false);
+  });
 
 export const signOutUser = () => signOut(auth);
 

@@ -7,12 +7,13 @@ import Home from "./pages/Home/Home";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import SuggestionBoxCreation from "./pages/SuggestionBoxCreation/SuggestionBoxCreation";
 import Feedbacks from "./pages/Feedbacks/Feedbacks";
+import Medium from "./components/LandingMedium/Medium";
 
 const routes = () => {
   return (
     <Suspense fallback="Loading...">
       <Routes>
-        <Route exact path="/" element={<LandingPage />} />
+        <Route exact path="/" element={<Medium />} />
         <Route exact path="/get-started" element={<GetStarted />} />
         <Route exact path="/give-feedback/:uid" element={<FeedbackGiven />} />
         <Route

@@ -4,7 +4,6 @@ import { useEffect } from "react";
 import Feedback from "../../components/Feedback/Feedback";
 import UserGuide from "../../components/UserGuide/UserGuide";
 import HomeHeroSection from "../../components/HomeHeroSection/HomeHeroSection";
-import { useOutletContext } from "react-router-dom";
 
 const LandingPage = () => {
   // const [userGuide, feedback, homeHeroSection] = useOutletContext();

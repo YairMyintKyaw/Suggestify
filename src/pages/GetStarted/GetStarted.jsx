@@ -11,25 +11,25 @@ import Loader from "../../components/Loader/Loader";
 
 const GetStarted = () => {
   const type = useRef(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const handleSignIn = async () => {
-    setIsLoading(true);
-    await signInWithGoogleRedirect().then(() => {
-      setIsLoading(true);
-    });
+    signInWithGoogleRedirect();
   };
 
   useEffect(() => {
-    const typed = new Typed(type.current, {
-      strings: ["Suggestify"],
-      typeSpeed: 100,
-      backDelay: 1500,
-    });
-    return () => {
-      // Destroy Typed instance during cleanup to stop animation
-      typed.destroy();
-    };
-  }, []);
+    getGoogleRedirectResult(setIsLoading);
+    if (!isLoading) {
+      const typed = new Typed(type.current, {
+        strings: ["Suggestify"],
+        typeSpeed: 100,
+        backDelay: 1500,
+      });
+      return () => {
+        // Destroy Typed instance during cleanup to stop animation
+        typed.destroy();
+      };
+    }
+  }, [isLoading]);
   return (
     <>
       {!isLoading ? (

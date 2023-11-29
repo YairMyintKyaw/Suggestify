@@ -24,7 +24,6 @@ const App = () => {
         const isFeedbacksRoute =
           currentPath.split("/")[2] === "feedbacks" ||
           currentPath.split("/")[1] === "give-feedback";
-        console.log(currentPath.split("/")[2] === "feedbacks");
         dispatch(
           setUserInfo({
             displayName,

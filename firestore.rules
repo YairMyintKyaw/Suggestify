@@ -7,13 +7,14 @@ service cloud.firestore {
       allow read, write: if request.auth.uid != null && request.auth.uid == userId;
     }
     
-    match /feedbackBox/{feedbackBoxId}/{document=**}{
+    match /feedbackBox/{feedbackBoxId}/feedback/{document=**} {
     	allow read, delete: if request.auth.uid != null && exists(/databases/$(database)/documents/users/$(request.auth.uid)/feedbacks/$(feedbackBoxId));
       allow write : if true;
     }
     
-    
-    
-    
+    match /feedbackBox/{feedbackBoxId}{
+      allow read: if true;
+      allow write: if request.auth.uid != null && exists(/databases/$(database)/documents/users/$(request.auth.uid)/feedbacks/$(feedbackBoxId));
+    }
   }
 }

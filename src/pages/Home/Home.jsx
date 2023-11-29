@@ -58,7 +58,7 @@ const Home = () => {
           className="border min-w-[300px] shadow text-primary border-primary text-lg rounded-md bg-inherit px-3 py-1 outline-none placeholder:text-primary"
           placeholder="Search..."
         />
-        <div className="flex justify-end gap-3 h-fit">
+        <div className="flex justify-between gap-3 h-fit">
           <NavLink
             to={"create-box"}
             className={
