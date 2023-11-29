@@ -88,7 +88,6 @@ const Feedbacks = () => {
       feedbacks.sort(
         (feedbackA, feedbackB) => feedbackB.dateTime - feedbackA.dateTime
       );
-      console.log(feedbacks);
       setAllFeedbacks(feedbacks);
       setFeedbacks(feedbacks);
     };
@@ -109,7 +108,7 @@ const Feedbacks = () => {
     <>
       {boxName ? (
         <div>
-          {feedbacks && !isShare ? (
+          {feedbacks?.length && !isShare ? (
             <div className="min-h-screen bg-primary flex flex-col md:px-10 px-5 ">
               <div className="flex justify-between flex-col-reverse md:flex-row py-10 gap-5 md:gap-0">
                 <h1 className="bg-darkGreen shadow font-helvetica_compressed text-primary rounded-sm text-4xl flex items-center justify-center px-4 py-2 ">
