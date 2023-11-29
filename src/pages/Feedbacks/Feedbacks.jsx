@@ -15,6 +15,7 @@ import {
 import { pdf } from "@react-pdf/renderer";
 import FeedbackPdf from "../Pdf/FeedbackPdf";
 import * as FileSaver from "file-saver";
+import { FaRegTrashAlt } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import Loader from "../../components/Loader/Loader";
 
@@ -69,6 +70,10 @@ const Feedbacks = () => {
       setIsShare(true);
     }
   };
+  const handleDelete = async () => {
+    await deleteFeedbackCollection(uid, userId);
+    nav("/home");
+  };
   const handleGoBack = () => {
     isShare ? setIsShare(false) : nav(-1);
   };
@@ -88,7 +93,6 @@ const Feedbacks = () => {
       feedbacks.sort(
         (feedbackA, feedbackB) => feedbackB.dateTime - feedbackA.dateTime
       );
-      console.log(feedbacks);
       setAllFeedbacks(feedbacks);
       setFeedbacks(feedbacks);
     };
@@ -206,12 +210,20 @@ const Feedbacks = () => {
                     Go Back
                   </button>
                   {!feedbacks?.length && (
-                    <button
-                      className="bg-darkGreen text-primary text-xl   px-4 py-1 rounded-sm w-fit "
-                      onClick={refreshFeedbacks}
-                    >
-                      <IoIosRefresh />
-                    </button>
+                    <>
+                      <button
+                        className="bg-darkGreen text-primary text-xl   px-4 py-1 rounded-sm w-fit "
+                        onClick={refreshFeedbacks}
+                      >
+                        <IoIosRefresh />
+                      </button>
+                      <button
+                        className="bg-darkGreen text-primary text-xl   px-4 py-1 rounded-sm w-fit"
+                        onClick={handleDelete}
+                      >
+                        <FaRegTrashAlt />
+                      </button>
+                    </>
                   )}
                 </div>
               </div>
