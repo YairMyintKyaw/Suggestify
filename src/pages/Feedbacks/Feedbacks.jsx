@@ -88,6 +88,7 @@ const Feedbacks = () => {
       feedbacks.sort(
         (feedbackA, feedbackB) => feedbackB.dateTime - feedbackA.dateTime
       );
+      console.log(feedbacks);
       setAllFeedbacks(feedbacks);
       setFeedbacks(feedbacks);
     };
