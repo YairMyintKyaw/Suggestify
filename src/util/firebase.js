@@ -48,8 +48,8 @@ export const getGoogleRedirectResult = (callback) =>
       console.log("signed in");
     } else {
       console.log("no user");
+      callback(false);
     }
-    callback(false);
   });
 
 export const signOutUser = () => signOut(auth);
