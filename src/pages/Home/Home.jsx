@@ -16,7 +16,7 @@ const Home = () => {
   const handleInputChange = (e) => {
     const inputData = e.target.value;
     const filteredBoxes = allFeedbackBox.filter((box) =>
-      box.name.toLowerCase().includes(inputData)
+      box.name.toLowerCase().includes(inputData.toLowerCase())
     );
     setFeedbackBox(filteredBoxes);
   };
