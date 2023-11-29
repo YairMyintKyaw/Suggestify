@@ -94,7 +94,6 @@ const Feedbacks = () => {
     };
     const getFeedbackBoxTitle = async (uid) => {
       const name = await getFeedbackBoxName(uid);
-      console.log(name);
       setBoxName(name);
     };
 
@@ -109,7 +108,7 @@ const Feedbacks = () => {
     <>
       {boxName ? (
         <div>
-          {feedbacks?.length && !isShare ? (
+          {allFeedbacks?.length && !isShare ? (
             <div className="min-h-screen bg-primary flex flex-col md:px-10 px-5 ">
               <div className="flex justify-between flex-col-reverse md:flex-row py-10 gap-5 md:gap-0">
                 <h1 className="bg-darkGreen shadow font-helvetica_compressed text-primary rounded-sm text-4xl flex items-center justify-center px-4 py-2 ">
@@ -197,17 +196,27 @@ const Feedbacks = () => {
                 <h1 className="bg-darkGreen shadow font-helvetica_compressed text-primary rounded-sm text-4xl flex items-center justify-center px-4 py-2">
                   {boxName}
                 </h1>
-                <button
-                  className={
-                    "bg-darkGreen text-primary h-fit px-4 py-1 rounded-sm w-fit ms-auto"
-                  }
-                  onClick={handleGoBack}
-                >
-                  Go Back
-                </button>
+                <div className="flex justify-end gap-3 h-fit">
+                  <button
+                    className={
+                      "bg-darkGreen text-primary h-fit px-4 py-1 rounded-sm w-fit ms-auto"
+                    }
+                    onClick={handleGoBack}
+                  >
+                    Go Back
+                  </button>
+                  {!feedbacks?.length && (
+                    <button
+                      className="bg-darkGreen text-primary text-xl   px-4 py-1 rounded-sm w-fit "
+                      onClick={refreshFeedbacks}
+                    >
+                      <IoIosRefresh />
+                    </button>
+                  )}
+                </div>
               </div>
               <QrCode
-                url={`https://suggestify-seven.vercel.app/give-feedback/${uid}`}
+                url={`https://suggestify1.firebaseapp.com/give-feedback/${uid}`}
                 name={boxName}
               />
             </div>

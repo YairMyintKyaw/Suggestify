@@ -4,7 +4,6 @@ import GetStarted from "./pages/GetStarted/GetStarted";
 import FeedbackGiven from "./pages/FeedbackGiven/FeedbackGiven";
 import HowItsDeveloped from "./pages/HowItsDeveloped/HowItsDeveloped";
 import Home from "./pages/Home/Home";
-import LandingPage from "./pages/LandingPage/LandingPage";
 import SuggestionBoxCreation from "./pages/SuggestionBoxCreation/SuggestionBoxCreation";
 import Feedbacks from "./pages/Feedbacks/Feedbacks";
 import Medium from "./components/LandingMedium/Medium";
